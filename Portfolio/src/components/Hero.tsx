@@ -2,23 +2,23 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="bg-background min-h-screen flex items-center px-8"
+      className="bg-background min-h-screen flex items-center px-8 pt-24"
     >
       <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* Texto */}
         <div className="flex flex-col gap-6">
 
-          {/* Saludo */}
-          <span className="text-primary text-sm font-medium tracking-widest uppercase">
-            Hola, soy
-          </span>
-
-          {/* Nombre */}
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
-            Francisco <br />
-            <span className="text-primary">Calvo</span>
-          </h1>
+          {/* Saludo + Nombre juntos */}
+          <div className="flex flex-col gap-1">
+            <span className="text-primary text-sm font-medium tracking-widest uppercase">
+              Hola, soy
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
+              Francisco <br />
+              <span className="text-primary">Calvo</span>
+            </h1>
+          </div>
 
           {/* Título */}
           <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">
@@ -49,7 +49,7 @@ const Hero = () => {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-4 mt-2">
+          <div className="flex flex-wrap gap-4">
             <a
               href="#projects"
               className="bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
@@ -72,7 +72,7 @@ const Hero = () => {
           </div>
 
           {/* Links sociales */}
-          <div className="flex gap-6 mt-2">
+          <div className="flex gap-6">
             <a
               href="https://github.com/FranCalvoDev"
               target="_blank"
@@ -96,7 +96,6 @@ const Hero = () => {
         {/* Foto */}
         <div className="flex justify-center items-center">
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary bg-secondary flex items-center justify-center">
-            {/* Reemplazá esto por tu foto: */}
             {/* <img src="/foto.jpg" alt="Francisco Calvo" className="w-full h-full object-cover rounded-full" /> */}
             <span className="text-muted-foreground text-sm">Tu foto acá</span>
           </div>
