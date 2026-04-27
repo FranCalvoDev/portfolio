@@ -1,5 +1,38 @@
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { fadeUp, fadeLeft, fadeRight, scaleIn, staggerContainer, staggerItem } from "../utils/animations"
+
+const photos = [
+  "/Foto1.jpg",
+  "/Foto2.jpg",
+  "/Foto3.jpg",
+]
+
+const PhotoCarousel = () => {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % photos.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary overflow-hidden">
+      {photos.map((photo, index) => (
+        <img
+          key={photo}
+          src={photo}
+          alt={`Francisco Calvo ${index + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            index === current ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
+    </div>
+  )
+}
 
 const Hero = () => {
   return (
@@ -27,26 +60,28 @@ const Hero = () => {
             </h1>
           </motion.div>
 
-            {/* Título */}
+          {/* Título */}
           <motion.h2
             variants={fadeRight}
-            className="gap-1 text-xl md:text-2xl text-muted-foreground font-medium" 
+            className="gap-1 text-xl md:text-2xl text-muted-foreground font-medium"
           >
             -Desarrollador Web{" "}
             <span className="text-primary">Full-Stack </span> <br />
             -Analista de{" "}
             <span className="text-primary">Sistemas</span>
           </motion.h2>
-         
+
           {/* Descripción */}
           <motion.p
             variants={fadeUp}
             className="text-foreground text-base leading-relaxed max-w-md"
           >
             Analizo y creo los requerimientos para convertirlos en soluciones. Como Analista en Sistemas y Desarrollador Full-Stack, diseño
-             y construyo soluciones web modernas, escalables y con impacto real.
-           Bilingüe —{" "}
-            <span className="text-primary">Español / Inglés B2</span>.
+            y construyo soluciones web modernas, escalables y con impacto real.
+            <span className="mt-2 block">
+              Bilingüe —{" "}
+              <span className="text-primary">Español / Inglés B2</span>.
+            </span>
           </motion.p>
 
           {/* Badges */}
@@ -78,51 +113,55 @@ const Hero = () => {
             >
               Contactame
             </a>
-            <a
-              href="/cv.pdf"
-              download
-              className="border border-border text-foreground font-semibold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition"
-            >
-              Descargar CV
-            </a>
-          </motion.div>
-
-          {/* Links sociales */}
-          <motion.div variants={fadeUp} className="flex gap-6">
-            <a
-              href="https://github.com/FranCalvoDev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground text-md hover:text-primary transition"
-            >
-              GitHub ↗
-            </a>
-            <a
-              href="https://www.linkedin.com/in/francisco-calvo-5445582ba/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground text-md hover:text-primary transition"
-            >
-              LinkedIn ↗
-            </a>
           </motion.div>
 
         </motion.div>
 
-        {/* Foto — entra desde la derecha con scale */}
+        {/* Foto + Botones — entra desde la derecha */}
         <motion.div
-          className="flex justify-center items-center"
+          className="flex flex-col items-center gap-6"
           variants={fadeRight}
           initial="hidden"
           animate="show"
         >
-          <motion.div
-            variants={scaleIn}
-            className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary bg-secondary flex items-center justify-center"
-          >
-            {/* <img src="/foto.jpg" alt="Francisco Calvo" className="w-full h-full object-cover rounded-full" /> */}
-            <span className="text-muted-foreground text-sm">Tu foto acá</span>
+          <motion.div variants={scaleIn}>
+            <PhotoCarousel />
           </motion.div>
+
+          {/* Pirámide de botones */}
+<div className="flex flex-col items-center gap-3 w-full">
+
+  {/* Punta — Descargar CV destacado */}
+  <a
+    href="/cv.pdf"
+    download
+    className="bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-lg hover:opacity-90 transition text-center w-48"
+  >
+    Descargar CV
+  </a>
+
+  {/* Base — GitHub + LinkedIn más chicos */}
+  <div className="flex gap-3">
+    <a
+      href="https://github.com/FranCalvoDev"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-1.5 border border-border text-foreground text-sm px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition"
+    >
+      🐙 GitHub ↗
+    </a>
+    <a
+      href="https://www.linkedin.com/in/francisco-calvo-5445582ba/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-1.5 border border-border text-foreground text-sm px-4 py-2 rounded-lg hover:border-primary hover:text-primary transition"
+    >
+      💼 LinkedIn ↗
+    </a>
+  </div>
+
+</div>
+
         </motion.div>
 
       </div>
