@@ -77,7 +77,7 @@ const Hero = () => {
             className="text-foreground text-base leading-relaxed max-w-md"
           >
             Analizo y creo los requerimientos para convertirlos en soluciones. Como Analista en Sistemas y Desarrollador Full-Stack, diseño
-            y construyo soluciones web modernas, escalables y con impacto real.
+            y construyo soluciones web modernas, escalables y eficientes.
             <span className="mt-2 block">
               Bilingüe —{" "}
               <span className="text-primary">Español / Inglés B2</span>.
@@ -133,7 +133,7 @@ const Hero = () => {
 
   {/* Punta — Descargar CV destacado */}
   <a
-    href="/cv.pdf"
+    href="/FranciscoCalvo-CV-(Español).pdf"
     download
     className="bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-lg hover:opacity-90 transition text-center w-48"
   >
