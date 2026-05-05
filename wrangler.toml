@@ -1,0 +1,10 @@
+[build]
+command = "npm run build"
+cwd = "Portfolio"
+
+[build.upload]
+format = "directory"
+dir = "Portfolio/dist"
+
+[site]
+bucket = "Portfolio/dist"
