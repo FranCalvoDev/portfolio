@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { fadeUp, fadeLeft, fadeRight, scaleIn, staggerContainer, staggerItem } from "../utils/animations"
 
@@ -9,27 +8,13 @@ const photos = [
 ]
 
 const PhotoCarousel = () => {
-  const [current, setCurrent] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % photos.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary overflow-hidden">
-      {photos.map((photo, index) => (
-        <img
-          key={photo}
-          src={photo}
-          alt={`Francisco Calvo ${index + 1}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            index === current ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
+      <img
+        src={photos[0]}
+        alt="Francisco Calvo 1"
+        className="w-full h-full object-cover"
+      />
     </div>
   )
 }
